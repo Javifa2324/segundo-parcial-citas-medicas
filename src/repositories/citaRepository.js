@@ -134,11 +134,51 @@ async function existeDoctor(id) {
     return rows.length > 0;
 }
 
+
+async function buscarConflicto(doctorId, inicio, fin, excluirId = null) {
+    let sql = `
+        SELECT id
+        FROM citas
+        WHERE doctor_id = ?
+          AND estado <> 'cancelada'
+          AND fecha_hora_inicio < ?
+          AND fecha_hora_fin > ?
+    `;
+
+    const params = [doctorId, fin, inicio];
+
+    if (excluirId) {
+        sql += ' AND id <> ?';
+        params.push(excluirId);
+    }
+
+    sql += ' LIMIT 1';
+
+    const [rows] = await pool.query(sql, params);
+    return rows[0] || null;
+}
+
+async function cambiarEstado(id, estado) {
+    const [result] = await pool.query(`
+        UPDATE citas
+        SET estado = ?
+        WHERE id = ?
+    `, [estado, id]);
+
+    if (result.affectedRows === 0) {
+        return null;
+    }
+
+    return obtenerPorId(id);
+}
+
 module.exports = {
     listar,
     obtenerPorId,
     crear,
     actualizar,
     existePaciente,
-    existeDoctor
+    existeDoctor,
+    buscarConflicto,
+    cambiarEstado
 };

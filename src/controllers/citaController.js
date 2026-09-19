@@ -50,9 +50,24 @@ async function actualizar(req, res) {
     }
 }
 
+
+async function cambiarEstado(req, res) {
+    try {
+        const cita = await citaService.cambiarEstadoCita(
+            req.params.id,
+            req.body.estado
+        );
+
+        res.status(200).json(cita);
+    } catch (error) {
+        manejarError(error, res);
+    }
+}
+
 module.exports = {
     listar,
     obtenerPorId,
     crear,
-    actualizar
+    actualizar,
+    cambiarEstado
 };

@@ -163,6 +163,20 @@ async function obtenerCita(id) {
 
 async function crearCita(datos) {
     const cita = await validarDatosCita(datos);
+
+    const conflicto = await citaRepository.buscarConflicto(
+        cita.doctor_id,
+        cita.fecha_hora_inicio,
+        cita.fecha_hora_fin
+    );
+
+    if (conflicto) {
+        throw crearError(
+            'El doctor ya tiene una cita activa en ese horario',
+            409
+        );
+    }
+
     return citaRepository.crear(cita);
 }
 
@@ -177,12 +191,51 @@ async function actualizarCita(id, datos) {
 
     const cita = await validarDatosCita(datos);
 
+    const conflicto = await citaRepository.buscarConflicto(
+        cita.doctor_id,
+        cita.fecha_hora_inicio,
+        cita.fecha_hora_fin,
+        id
+    );
+
+    if (conflicto) {
+        throw crearError(
+            'El doctor ya tiene una cita activa en ese horario',
+            409
+        );
+    }
+
     return citaRepository.actualizar(id, cita);
+}
+
+
+async function cambiarEstadoCita(id, estado) {
+    id = validarId(id, 'id');
+
+    const estadosPermitidos = [
+        'pendiente',
+        'confirmada',
+        'cancelada',
+        'atendida'
+    ];
+
+    if (!estadosPermitidos.includes(estado)) {
+        throw crearError('Estado de cita inválido', 400);
+    }
+
+    const existente = await citaRepository.obtenerPorId(id);
+
+    if (!existente) {
+        throw crearError('Cita no encontrada', 404);
+    }
+
+    return citaRepository.cambiarEstado(id, estado);
 }
 
 module.exports = {
     listarCitas,
     obtenerCita,
     crearCita,
-    actualizarCita
+    actualizarCita,
+    cambiarEstadoCita
 };
