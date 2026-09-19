@@ -177,3 +177,19 @@ Se documentaron respuestas HTTP:
 - 400 Bad Request
 - 404 Not Found
 - 409 Conflict
+
+## Flujo Git con rama develop
+
+El proyecto utiliza el siguiente flujo de integración:
+
+`feature/* -> develop -> main`
+
+Pull Requests de integración hacia `develop`:
+
+- PR #6: `feature/docker-mysql-schema` -> `develop`
+- PR #7: `feature/api-rest-citas` -> `develop`
+- PR #8: `feature/validacion-conflictos-estados` -> `develop`
+- PR #9: `feature/fullcalendar-ui` -> `develop`
+- PR #10: `feature/evidencia-final` -> `develop`
+
+Finalmente, la rama `develop` se integra a `main` mediante Pull Request, dejando visible el flujo completo en el historial de Git.
