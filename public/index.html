@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas Médicas</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Sistema de Citas Médicas</h1>
+            <p>Segundo Parcial - Análisis de Sistemas II</p>
+        </div>
+
+        <div class="filtro">
+            <label for="filtroDoctor">Doctor</label>
+            <select id="filtroDoctor">
+                <option value="">Todos los doctores</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <section class="leyenda">
+            <span><i class="pendiente"></i>Pendiente</span>
+            <span><i class="confirmada"></i>Confirmada</span>
+            <span><i class="cancelada"></i>Cancelada</span>
+            <span><i class="atendida"></i>Atendida</span>
+        </section>
+
+        <div id="calendar"></div>
+    </main>
+
+    <dialog id="modalCita">
+        <form id="formCita">
+            <h2>Nueva cita médica</h2>
+
+            <label>Paciente</label>
+            <select id="paciente" required></select>
+
+            <label>Doctor</label>
+            <select id="doctor" required></select>
+
+            <label>Fecha</label>
+            <input id="fecha" type="date" required>
+
+            <div class="horas">
+                <div>
+                    <label>Hora inicio</label>
+                    <input id="horaInicio" type="time" required>
+                </div>
+
+                <div>
+                    <label>Hora fin</label>
+                    <input id="horaFin" type="time" required>
+                </div>
+            </div>
+
+            <label>Motivo</label>
+            <textarea id="motivo" required></textarea>
+
+            <div class="acciones">
+                <button type="button" id="cerrarModal" class="secundario">
+                    Cancelar
+                </button>
+
+                <button type="submit">
+                    Guardar cita
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="modalDetalle">
+        <div id="detalleContenido"></div>
+
+        <div class="acciones">
+            <button id="cerrarDetalle">Cerrar</button>
+        </div>
+    </dialog>
+
+    <script src="app.js?v=4"></script>
+</body>
+</html>
