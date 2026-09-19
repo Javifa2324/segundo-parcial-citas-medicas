@@ -145,3 +145,35 @@ RQNF-01, RQNF-02, RQNF-03, RQNF-04, RQNF-05, RQNF-06, RQNF-07 y RQNF-08.
 - Calendario principal: `evidencia/01-fullcalendar.png`
 - Formulario de creación de cita: `evidencia/02-crear-cita.png`
 - Detalle de cita: `evidencia/03-detalle-cita.png`
+
+## Comandos ejecutados
+
+Los comandos utilizados durante la implementación y las pruebas se encuentran en:
+
+`evidencia/comandos-ejecutados.txt`
+
+Incluyen pruebas de:
+
+- Docker Compose.
+- MySQL.
+- API REST.
+- creación de citas;
+- filtros;
+- reprogramación;
+- cambio de estado;
+- conflicto HTTP 409;
+- flujo Git.
+
+## Respuestas de la API
+
+Las respuestas principales obtenidas durante las pruebas se encuentran en:
+
+`evidencia/respuestas-api.txt`
+
+Se documentaron respuestas HTTP:
+
+- 200 OK
+- 201 Created
+- 400 Bad Request
+- 404 Not Found
+- 409 Conflict
