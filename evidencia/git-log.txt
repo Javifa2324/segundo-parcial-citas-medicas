@@ -1,0 +1,20 @@
+*   a1b96f8 (HEAD -> feature/evidencia-final, origin/main, main) Merge pull request #4 from Javifa2324/feature/fullcalendar-ui
+|\
+| * 5f3e4a4 (origin/feature/fullcalendar-ui, feature/fullcalendar-ui) feat(calendar): integra FullCalendar interactivo [RQF-02][RQF-04][RQF-09][RQF-10][RQNF-06]
+|/
+*   c3acce3 Merge pull request #3 from Javifa2324/feature/validacion-conflictos-estados
+|\
+| * 969f104 (origin/feature/validacion-conflictos-estados, feature/validacion-conflictos-estados) feat(citas): valida conflictos y persiste estados [RQF-03][RQF-05][RQNF-03][RQNF-07]
+|/
+*   9e1ea05 Merge pull request #2 from Javifa2324/feature/api-rest-citas
+|\
+| * f34763d (origin/feature/api-rest-citas, feature/api-rest-citas) feat(api): implementa citas, filtros y validaciones [RQF-01][RQF-06][RQF-07][RQF-08][RQNF-03][RQNF-04]
+| * d3505e6 fix(db): configura utf8mb4 para datos medicos [RQNF-03]
+| * e088215 chore(api): configura entorno y conexion MySQL [RQF-07][RQNF-04]
+|/
+*   560da28 Merge pull request #1 from Javifa2324/feature/docker-mysql-schema
+|\
+| * 363a265 (origin/feature/docker-mysql-schema, feature/docker-mysql-schema) feat(db): agrega esquema y datos semilla de citas medicas [RQF-01][RQNF-01]
+| * 19c1f14 feat(docker): configura MySQL con volumen persistente [RQNF-01][RQNF-02]
+|/
+* 3a76e01 chore: inicializa proyecto del segundo parcial
