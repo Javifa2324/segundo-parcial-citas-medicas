@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #243447;
+}
+
+header {
+    background: white;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #667085;
+}
+
+main {
+    max-width: 1300px;
+    margin: 25px auto;
+    padding: 0 20px;
+}
+
+#calendar {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+select,
+input,
+textarea {
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.leyenda {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.leyenda span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.leyenda i {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.pendiente {
+    background: #f59e0b;
+}
+
+.confirmada {
+    background: #2563eb;
+}
+
+.cancelada {
+    background: #dc2626;
+}
+
+.atendida {
+    background: #16a34a;
+}
+
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 25px;
+    width: min(500px, 92vw);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,.45);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.horas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.horas div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+textarea {
+    min-height: 80px;
+}
+
+.acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+button.secundario {
+    background: #667085;
+}
+
+.detalle-fila {
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    main {
+        padding: 0 8px;
+    }
+
+    #calendar {
+        padding: 8px;
+    }
+
+    .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .horas {
+        grid-template-columns: 1fr;
+    }
+}
