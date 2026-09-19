@@ -1,3 +1,5 @@
+SET NAMES utf8mb4;
+
 INSERT INTO pacientes (nombre, apellido, telefono, correo) VALUES
 ('Juan', 'Pérez', '5555-1001', 'juan.perez@example.com'),
 ('María', 'López', '5555-1002', 'maria.lopez@example.com'),
