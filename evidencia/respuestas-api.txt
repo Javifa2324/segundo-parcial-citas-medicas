@@ -1,0 +1,48 @@
+GET /api/health
+HTTP 200 OK
+
+{"status":"ok","database":"connected"}
+
+
+POST /api/citas
+HTTP 201 Created
+
+Cita creada correctamente y persistida en MySQL.
+
+
+GET /api/citas/9999
+HTTP 404 Not Found
+
+{"error":"Cita no encontrada"}
+
+
+POST /api/citas con datos incompletos
+HTTP 400 Bad Request
+
+{"error":"paciente_id, doctor_id, fecha_hora_inicio, fecha_hora_fin y motivo son obligatorios"}
+
+
+POST /api/citas con horario ocupado
+HTTP 409 Conflict
+
+{"error":"El doctor ya tiene una cita activa en ese horario"}
+
+
+PATCH /api/citas/4/estado
+HTTP 200 OK
+
+Estado almacenado:
+"cancelada"
+
+
+Drag & drop FullCalendar
+
+Antes:
+2026-09-25 09:00:00
+2026-09-25 09:30:00
+
+Después:
+2026-09-26 09:00:00
+2026-09-26 09:30:00
+
+La nueva fecha se verificó directamente en MySQL.

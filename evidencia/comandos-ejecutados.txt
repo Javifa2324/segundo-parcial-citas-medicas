@@ -1,0 +1,85 @@
+# Docker
+
+docker compose config
+docker compose up -d
+docker compose down
+docker ps
+
+docker exec -it citas-medicas-mysql \
+mysql --default-character-set=utf8mb4 \
+-u citas_user -pcitas123 citas_medicas \
+-e "SHOW TABLES;"
+
+docker exec -it citas-medicas-mysql \
+mysql --default-character-set=utf8mb4 \
+-u citas_user -pcitas123 citas_medicas \
+-e "SELECT id,nombre,apellido FROM pacientes; SELECT id,nombre,apellido,especialidad FROM doctores;"
+
+# API
+
+npm start
+
+curl http://localhost:3000/api/health
+
+curl http://localhost:3000/api/pacientes
+
+curl http://localhost:3000/api/doctores
+
+curl http://localhost:3000/api/citas
+
+curl "http://localhost:3000/api/citas?doctor_id=1"
+
+curl "http://localhost:3000/api/citas?desde=2026-09-22&hasta=2026-09-23"
+
+# Crear cita
+
+curl -i -X POST http://localhost:3000/api/citas \
+  -H "Content-Type: application/json" \
+  -d '{
+    "paciente_id": 4,
+    "doctor_id": 1,
+    "fecha_hora_inicio": "2026-09-24 11:00:00",
+    "fecha_hora_fin": "2026-09-24 11:30:00",
+    "motivo": "Consulta de seguimiento"
+  }'
+
+# Reprogramar cita
+
+curl -i -X PUT http://localhost:3000/api/citas/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "paciente_id": 1,
+    "doctor_id": 1,
+    "fecha_hora_inicio": "2026-09-25 09:00:00",
+    "fecha_hora_fin": "2026-09-25 09:30:00",
+    "motivo": "Consulta general"
+  }'
+
+# Cambio de estado
+
+curl -i -X PATCH http://localhost:3000/api/citas/4/estado \
+  -H "Content-Type: application/json" \
+  -d '{"estado":"cancelada"}'
+
+# Validación de conflicto
+
+curl -i -X POST http://localhost:3000/api/citas \
+  -H "Content-Type: application/json" \
+  -d '{
+    "paciente_id": 2,
+    "doctor_id": 1,
+    "fecha_hora_inicio": "2026-09-22 09:10:00",
+    "fecha_hora_fin": "2026-09-22 09:20:00",
+    "motivo": "Prueba de conflicto"
+  }'
+
+# Git
+
+git switch -c feature/docker-mysql-schema
+git switch -c feature/api-rest-citas
+git switch -c feature/validacion-conflictos-estados
+git switch -c feature/fullcalendar-ui
+
+git status
+git diff --check
+git log --graph --all --decorate --oneline

@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS                    PORTS                                                    NAMES
+9dad95083f37   mysql:8.4   "docker-entrypoint.s…"   33 minutes ago   Up 33 minutes (healthy)   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp   citas-medicas-mysql
